@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ikazune's Portfolio</title>
+  <link rel="icon" type="image/png" href="Images/icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -79,7 +80,7 @@
             <!-- Project 1: RoPysence -->
             <div class="project-card">
               <div class="project-media">
-                <img src="Images/Ropysence.png" alt="RoPysence Thumbnail" class="project-img">
+                <img src="Images/Ropysence.png" alt="RoPysence Thumbnail" class="project-img" loading="lazy" decoding="async">
               </div>
               <div class="project-info">
                 <div class="project-header">
@@ -98,7 +99,7 @@
             <!-- Project 2: Standalone the Discord Bot -->
             <div class="project-card">
               <div class="project-media">
-                <img src="Images/Discordbot.webp" alt="Standalone Thumbnail" class="project-img">
+                <img src="Images/Discordbot.webp" alt="Standalone Thumbnail" class="project-img" loading="lazy" decoding="async">
               </div>
               <div class="project-info">
                 <div class="project-header">
@@ -135,12 +136,44 @@
       <div id="tab-graphics" class="tab-pane">
         <section class="section" id="graphics-portfolio">
           <h2 class="section-title">Graphics</h2>
-          <p class="section-body">
-            Art portfolio showcase coming soon. Artwork and designs will be cataloged here.
-          </p>
+          <div class="art-collage" id="art-collage">
+            <div class="art-item" data-src="Images/Artpieces AVIF/8p2_Lineup_no_credit.avif">
+              <img src="Images/Artpieces AVIF/8p2_Lineup_no_credit.avif" alt="8p2 Lineup" class="art-img" loading="lazy" decoding="async">
+            </div>
+            <div class="art-item" data-src="Images/Artpieces AVIF/Codedcore.avif">
+              <img src="Images/Artpieces AVIF/Codedcore.avif" alt="Codedcore" class="art-img" loading="lazy" decoding="async">
+            </div>
+            <div class="art-item" data-src="Images/Artpieces AVIF/LMS_Team_Lineup.avif">
+              <img src="Images/Artpieces AVIF/LMS_Team_Lineup.avif" alt="LMS Team Lineup" class="art-img" loading="lazy" decoding="async">
+            </div>
+            <div class="art-item" data-src="Images/Artpieces AVIF/NFD_Banner_V2.avif">
+              <img src="Images/Artpieces AVIF/NFD_Banner_V2.avif" alt="NFD Banner V2" class="art-img" loading="lazy" decoding="async">
+            </div>
+            <div class="art-item" data-src="Images/Artpieces AVIF/Obctmajortbs.avif">
+              <img src="Images/Artpieces AVIF/Obctmajortbs.avif" alt="Obctmajortbs" class="art-img" loading="lazy" decoding="async">
+            </div>
+            <div class="art-item" data-src="Images/Artpieces AVIF/SPOILER_Art_Trade.avif">
+              <img src="Images/Artpieces AVIF/SPOILER_Art_Trade.avif" alt="Art Trade" class="art-img" loading="lazy" decoding="async">
+            </div>
+            <div class="art-item" data-src="Images/Artpieces AVIF/TAPH_POSTER.avif">
+              <img src="Images/Artpieces AVIF/TAPH_POSTER.avif" alt="TAPH Poster" class="art-img" loading="lazy" decoding="async">
+            </div>
+            <div class="art-item" data-src="Images/Artpieces AVIF/TeamBlueSajambi.avif">
+              <img src="Images/Artpieces AVIF/TeamBlueSajambi.avif" alt="Team Blue Sajambi" class="art-img" loading="lazy" decoding="async">
+            </div>
+          </div>
         </section>
       </div>
     </main>
+
+    <!-- Lightbox Modal for Artpieces (Zero emoji, sleek minimal preview) -->
+    <div id="art-modal" class="art-modal" aria-hidden="true">
+      <div class="art-modal-backdrop" id="modal-backdrop"></div>
+      <div class="art-modal-content">
+        <img id="modal-img" src="" alt="Enlarged Artwork" class="modal-artwork">
+        <button type="button" class="modal-close" id="modal-close" aria-label="Close">Close [ESC]</button>
+      </div>
+    </div>
 
     <footer class="footer">
       <p>&copy; 2026 Blackwell Architecture</p>

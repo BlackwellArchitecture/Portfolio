@@ -64,6 +64,9 @@ tabButtons.forEach((btn) => {
     const targetPane = document.getElementById(targetId);
     if (targetPane) {
       targetPane.classList.add("active");
+      if (targetId === "tab-graphics") {
+        updateArtCollageRatios();
+      }
     }
   });
 });
@@ -129,3 +132,67 @@ function initExperienceStats() {
 }
 
 initExperienceStats();
+
+// Dynamic Aspect-Ratio Collage Layout
+function updateArtCollageRatios() {
+  const artItems = document.querySelectorAll(".art-item");
+  artItems.forEach((item) => {
+    const img = item.querySelector(".art-img");
+    if (!img) return;
+
+    function applyRatio() {
+      if (img.naturalWidth && img.naturalHeight) {
+        const ratio = img.naturalWidth / img.naturalHeight;
+        // flex: <flex-grow> <flex-shrink> <flex-basis>
+        item.style.flex = `${ratio.toFixed(3)} ${ratio.toFixed(3)} ${Math.round(200 * ratio)}px`;
+      }
+    }
+
+    if (img.complete && img.naturalWidth > 0) {
+      applyRatio();
+    } else {
+      img.addEventListener("load", applyRatio, { once: true });
+    }
+  });
+}
+
+// Initial check for collage
+updateArtCollageRatios();
+
+// Lightbox Modal Handling
+const artModal = document.getElementById("art-modal");
+const modalImg = document.getElementById("modal-img");
+const modalClose = document.getElementById("modal-close");
+const modalBackdrop = document.getElementById("modal-backdrop");
+
+function openArtwork(src, alt) {
+  if (!artModal || !modalImg) return;
+  modalImg.src = src;
+  modalImg.alt = alt || "Enlarged Artwork";
+  artModal.classList.add("open");
+  artModal.setAttribute("aria-hidden", "false");
+}
+
+function closeArtwork() {
+  if (!artModal || !modalImg) return;
+  artModal.classList.remove("open");
+  artModal.setAttribute("aria-hidden", "true");
+  modalImg.src = "";
+}
+
+document.querySelectorAll(".art-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    const src = item.getAttribute("data-src");
+    const img = item.querySelector(".art-img");
+    openArtwork(src, img ? img.alt : "");
+  });
+});
+
+if (modalClose) modalClose.addEventListener("click", closeArtwork);
+if (modalBackdrop) modalBackdrop.addEventListener("click", closeArtwork);
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && artModal && artModal.classList.contains("open")) {
+    closeArtwork();
+  }
+});

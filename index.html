@@ -15,35 +15,73 @@
       <h1 class="title">
         <span class="alias-viewport">
           <span id="alias" class="alias-text">ikazune</span>
-        </span><span id="title-suffix">'s Portfolio</span>
+        </span><span class="title-suffix">'s Portfolio</span>
       </h1>
-      <p class="subtitle">Developer &amp; Systems Architecture</p>
+      <p class="alias-note">You might know me differently depending on what platform I'm on</p>
+      <p class="subtitle">Developer &amp; Systems Architecture | Graphics Designer</p>
+
+      <nav class="tab-nav">
+        <button type="button" class="tab-btn active" data-tab="tab-main">Main</button>
+        <button type="button" class="tab-btn" data-tab="tab-graphics">Graphics</button>
+      </nav>
     </header>
 
     <main class="content">
-      <section class="section" id="about">
-        <h2 class="section-title">About</h2>
-        <p class="section-body">
-          Welcome to my portfolio. This site is built with a minimalist foundation designed to scale with projects, writing, and system designs over time.
-        </p>
-      </section>
+      <!-- Main Tab Content -->
+      <div id="tab-main" class="tab-pane active">
+        <section class="section" id="about">
+          <h2 class="section-title">About</h2>
+          <p class="section-body">
+            Welcome to my portfolio. This site is built with a minimalist foundation designed to scale with projects, writing, graphics, and system designs over time.
+          </p>
+        </section>
 
-      <section class="section" id="projects">
-        <h2 class="section-title">Projects</h2>
-        <ul class="project-list">
-          <li class="project-item">
-            <span class="project-name">Portfolio</span>
-            <span class="project-desc">Minimalist static portfolio website.</span>
-          </li>
-        </ul>
-      </section>
+        <section class="section" id="projects">
+          <h2 class="section-title">Projects</h2>
+          <div class="project-card">
+            <div class="project-media">
+              <img src="Images/Ropysence.png" alt="RoPysence Preview" class="project-img">
+            </div>
+            <div class="project-info">
+              <div class="project-header">
+                <h3 class="project-name">RoPysence</h3>
+                <a href="https://github.com/codedcorerblx/ropysence" target="_blank" rel="noopener noreferrer" class="link project-link">GitHub</a>
+              </div>
+              <p class="project-desc">
+                Custom Discord Rich Presence that mirrors your live Roblox status (Online / In Game with server player count / In Studio / Offline), pushed over the real Discord Gateway using a scoped OAuth2 grant.
+              </p>
+            </div>
+          </div>
+        </section>
 
-      <section class="section" id="contact">
-        <h2 class="section-title">Contact</h2>
-        <div class="links">
-          <a href="https://github.com/BlackwellArchitecture" target="_blank" rel="noopener noreferrer" class="link">GitHub</a>
-        </div>
-      </section>
+        <section class="section" id="contact">
+          <h2 class="section-title">Contact</h2>
+          <div class="contact-list">
+            <div class="contact-item">
+              <span class="contact-label">Email:</span>
+              <a href="mailto:123456keean1+portfolio@gmail.com" class="link">123456keean1+portfolio@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Discord:</span>
+              <span class="contact-value">@ikazune</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">GitHub:</span>
+              <a href="https://github.com/BlackwellArchitecture" target="_blank" rel="noopener noreferrer" class="link">github.com/BlackwellArchitecture</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Graphics Tab Content -->
+      <div id="tab-graphics" class="tab-pane">
+        <section class="section" id="graphics-portfolio">
+          <h2 class="section-title">Graphics</h2>
+          <p class="section-body">
+            Art portfolio showcase coming soon. Artwork and designs will be cataloged here.
+          </p>
+        </section>
+      </div>
     </main>
 
     <footer class="footer">

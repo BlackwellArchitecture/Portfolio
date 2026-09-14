@@ -7,6 +7,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- SVG defs for half star gradient -->
+  <svg style="display: none;">
+    <defs>
+      <linearGradient id="half-star-grad">
+        <stop offset="50%" stop-color="var(--star-color)" />
+        <stop offset="50%" stop-color="var(--star-empty)" />
+      </linearGradient>
+    </defs>
+  </svg>
+
   <div class="container">
     <header class="header">
       <div class="avatar-wrapper">
@@ -32,24 +42,72 @@
         <section class="section" id="about">
           <h2 class="section-title">About</h2>
           <p class="section-body">
-            Welcome to my portfolio. This site is built with a minimalist foundation designed to scale with projects, writing, graphics, and system designs over time.
+            A showcase to all my works, contributions. I'm currently learning how databases work for websites and I am actively learning how to develop systems and tools for everyday or niche use
           </p>
+        </section>
+
+        <section class="section" id="skills">
+          <h2 class="section-title">Skills</h2>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Graphic Design</span>
+                <div class="skill-stars-wrapper">
+                  <span class="skill-score">4.5/5</span>
+                  <div class="stars-row" data-rating="4.5"></div>
+                </div>
+              </div>
+              <span class="skill-meta" id="graphic-design-meta"></span>
+            </div>
+
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">Website Development</span>
+                <div class="skill-stars-wrapper">
+                  <span class="skill-score">3/5</span>
+                  <div class="stars-row" data-rating="3"></div>
+                </div>
+              </div>
+              <span class="skill-meta" id="web-dev-meta"></span>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="projects">
           <h2 class="section-title">Projects</h2>
-          <div class="project-card">
-            <div class="project-media">
-              <img src="Images/Ropysence.png" alt="RoPysence Preview" class="project-img">
-            </div>
-            <div class="project-info">
-              <div class="project-header">
-                <h3 class="project-name">RoPysence</h3>
-                <a href="https://github.com/codedcorerblx/ropysence" target="_blank" rel="noopener noreferrer" class="link project-link">GitHub</a>
+          <div class="projects-container">
+            <!-- Project 1: RoPysence -->
+            <div class="project-card">
+              <div class="project-media">
+                <img src="Images/Ropysence.png" alt="RoPysence Thumbnail" class="project-img">
               </div>
-              <p class="project-desc">
-                Custom Discord Rich Presence that mirrors your live Roblox status (Online / In Game with server player count / In Studio / Offline), pushed over the real Discord Gateway using a scoped OAuth2 grant.
-              </p>
+              <div class="project-info">
+                <div class="project-header">
+                  <h3 class="project-name">RoPysence</h3>
+                  <div class="project-links">
+                    <a href="https://ropysence.vercel.app/" target="_blank" rel="noopener noreferrer" class="link">Website</a>
+                    <a href="https://github.com/codedcorerblx/ropysence" target="_blank" rel="noopener noreferrer" class="link">GitHub</a>
+                  </div>
+                </div>
+                <p class="project-desc">
+                  Custom Discord Rich Presence that mirrors your live Roblox status (Online / In Game with server player count / In Studio / Offline), pushed over the real Discord Gateway using a scoped OAuth2 grant.
+                </p>
+              </div>
+            </div>
+
+            <!-- Project 2: Standalone the Discord Bot -->
+            <div class="project-card">
+              <div class="project-media">
+                <img src="Images/Discordbot.webp" alt="Standalone Thumbnail" class="project-img">
+              </div>
+              <div class="project-info">
+                <div class="project-header">
+                  <h3 class="project-name">'Standalone' the Discord Bot</h3>
+                </div>
+                <p class="project-desc">
+                  Used to log personal TBS/TBRS wins across several pressure communities and to maintain teammate count
+                </p>
+              </div>
             </div>
           </div>
         </section>

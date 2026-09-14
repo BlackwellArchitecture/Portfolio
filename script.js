@@ -47,6 +47,37 @@ updateDocumentTitle();
 // Change alias every 10 seconds
 setInterval(cycleAlias, 10000);
 
+// UTC+8 Digital Clock (AM/PM format, updates every second)
+function updateUTC8Clock() {
+  const clockEl = document.getElementById("utc8-clock");
+  if (!clockEl) return;
+
+  const now = new Date();
+  try {
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Singapore", // UTC+8 standard with no Daylight Saving Time
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true
+    });
+    clockEl.textContent = `${formatter.format(now)} UTC+8`;
+  } catch (e) {
+    // Fallback manual UTC+8 computation
+    const utcHours = now.getUTCHours();
+    const utc8HoursTotal = (utcHours + 8) % 24;
+    const isPM = utc8HoursTotal >= 12;
+    const hour12 = utc8HoursTotal % 12 || 12;
+    const pad = (n) => String(n).padStart(2, "0");
+    const formatted = `${pad(hour12)}:${pad(now.getUTCMinutes())}:${pad(now.getUTCSeconds())} ${isPM ? "PM" : "AM"} UTC+8`;
+    clockEl.textContent = formatted;
+  }
+}
+
+// Run clock immediately and tick every second
+updateUTC8Clock();
+setInterval(updateUTC8Clock, 1000);
+
 // Tab switching
 const tabButtons = document.querySelectorAll(".tab-btn");
 const tabPanes = document.querySelectorAll(".tab-pane");

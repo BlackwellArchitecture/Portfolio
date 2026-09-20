@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg-color: #002B36;
   --bg-secondary: #073642;
   --text-primary: #eee8d5;
@@ -316,6 +316,12 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.project-icon-svg {
+  padding: 12px;
+  object-fit: contain;
+  filter: brightness(0) invert(0.85);
 }
 
 .project-info {

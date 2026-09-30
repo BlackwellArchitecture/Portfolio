@@ -1,4 +1,4 @@
-﻿// Aliases array: using base name "Blackwell" so "'s" stays with the white suffix instead of taking the blue accent
+// Aliases array: using base name "Blackwell" so "'s" stays with the white suffix instead of taking the blue accent
 const aliases = [
   "ikazune",
   "NORTHSTAR",
@@ -227,3 +227,85 @@ window.addEventListener("keydown", (e) => {
     closeArtwork();
   }
 });
+
+// Live Ko-fi Funds Tracker
+let displayedFunds = 0;
+
+function animateValue(element, start, end, duration, prefix = "$") {
+  if (!element) return;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease-out cubic
+    const easeProgress = 1 - Math.pow(1 - progress, 3);
+    const current = start + (end - start) * easeProgress;
+    element.textContent = `${prefix}${current.toFixed(2)}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      element.textContent = `${prefix}${end.toFixed(2)}`;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+async function fetchLiveFunds() {
+  const currentEl = document.getElementById("funds-current");
+  const goalEl = document.getElementById("funds-goal");
+  const fillEl = document.getElementById("funds-fill");
+  const percentEl = document.getElementById("funds-percent");
+  const recentEl = document.getElementById("funds-recent");
+  const progressbar = document.getElementById("funds-progressbar");
+
+  if (!currentEl) return;
+
+  try {
+    const res = await fetch("/api/funds");
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    const total = typeof data.total === "number" ? data.total : parseFloat(data.total) || 0;
+    const goal = typeof data.goal === "number" ? data.goal : parseFloat(data.goal) || 100;
+    const currencySymbol = data.currencySymbol || "$";
+
+    // Animate counter
+    animateValue(currentEl, displayedFunds, total, 1000, currencySymbol);
+    displayedFunds = total;
+
+    if (goalEl) {
+      goalEl.textContent = `${currencySymbol}${goal.toFixed(2)}`;
+    }
+
+    const percent = goal > 0 ? Math.min(Math.round((total / goal) * 100), 100) : 0;
+    const rawPercent = goal > 0 ? Math.min((total / goal) * 100, 100).toFixed(1) : "0.0";
+
+    if (fillEl) {
+      fillEl.style.width = `${rawPercent}%`;
+    }
+    if (progressbar) {
+      progressbar.setAttribute("aria-valuenow", percent);
+    }
+    if (percentEl) {
+      percentEl.textContent = `${percent}% reached`;
+    }
+
+    if (recentEl && data.recentSupporter) {
+      recentEl.textContent = `Latest: ${data.recentSupporter}`;
+    }
+  } catch (err) {
+    // If running statically or before API deployment, provide clean zero state
+    if (displayedFunds === 0 && currentEl.textContent === "$0.00") {
+      if (fillEl) fillEl.style.width = "0%";
+    }
+  }
+}
+
+// Fetch on load and refresh every 60 seconds
+fetchLiveFunds();
+setInterval(fetchLiveFunds, 60000);
+

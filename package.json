@@ -1,0 +1,9 @@
+{
+  "name": "blackwell-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node -e \"import('http').then(h => h.createServer((req, res) => res.end('OK')).listen(3000))\""
+  }
+}

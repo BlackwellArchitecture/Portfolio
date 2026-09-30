@@ -13,3 +13,5 @@ desktop.ini
 node_modules/
 dist/
 .vercel/
+.vercel
+.env*

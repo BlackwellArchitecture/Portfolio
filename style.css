@@ -506,6 +506,213 @@ body {
   border-bottom-color: var(--link-hover);
 }
 
+/* Section Header Row */
+.section-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.section-header-row .section-title {
+  margin-bottom: 0;
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.55rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 6px var(--accent-color);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
+
+/* Support Card */
+.support-card {
+  padding: 1.1rem 1.25rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.support-card:hover {
+  border-color: var(--accent-color);
+}
+
+.support-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.support-desc {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* Funds Tracker */
+.funds-tracker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  background-color: rgba(0, 43, 54, 0.65);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.funds-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.funds-amount-group,
+.funds-goal-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.funds-goal-group {
+  align-items: flex-end;
+}
+
+.funds-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.funds-amount {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-family: var(--font-mono);
+  line-height: 1.2;
+}
+
+.funds-goal {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Progress Track and Fill */
+.funds-progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-secondary);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.funds-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #268bd2, var(--accent-color));
+  border-radius: 999px;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 8px rgba(42, 161, 152, 0.4);
+}
+
+.funds-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.funds-recent {
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 60%;
+}
+
+/* Action Row and Ko-fi Button */
+.support-action-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.25rem;
+}
+
+.kofi-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  padding: 0.55rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.kofi-btn:hover {
+  background-color: var(--accent-color);
+  color: #002B36;
+  box-shadow: 0 2px 10px rgba(42, 161, 152, 0.3);
+  transform: translateY(-1px);
+}
+
+.kofi-btn:active {
+  transform: translateY(0);
+}
+
+.kofi-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.support-subtext {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
 /* Footer */
 .footer {
   margin-top: 1.5rem;
@@ -542,5 +749,13 @@ body {
   .art-item {
     height: 180px;
     flex: 1 1 140px;
+  }
+  .support-action-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .kofi-btn {
+    justify-content: center;
   }
 }

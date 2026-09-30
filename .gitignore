@@ -1,4 +1,4 @@
-﻿# Operating System files
+# Operating System files
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -9,9 +9,11 @@ desktop.ini
 *.swp
 *.swo
 
-# Node / Build artifacts (if scaled up in future)
+# Node / Build artifacts
 node_modules/
 dist/
 .vercel/
 .vercel
 .env*
+.agents/
+skills-lock.json
